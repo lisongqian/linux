@@ -2253,8 +2253,10 @@ static struct kvm_mmu_page *kvm_mmu_alloc_shadow_page(struct kvm *kvm,
 	list_add(&sp->link, &kvm->arch.active_mmu_pages);
 	kvm_account_mmu_page(kvm, sp);
 
+    /*设置其对应的客户机物理页框号*/
 	sp->gfn = gfn;
 	sp->role = role;
+    /*把该页作为一个节点加入到哈希表相应的链表汇总*/
 	hlist_add_head(&sp->hash_link, sp_list);
 	if (sp_has_gptes(sp))
 		account_shadowed(kvm, sp);
