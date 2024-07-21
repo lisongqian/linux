@@ -7070,12 +7070,12 @@ __init int nested_vmx_hardware_setup(int (*exit_handlers[])(struct kvm_vcpu *))
 		init_vmcs_shadow_fields();
 	}
 
-	exit_handlers[EXIT_REASON_VMCLEAR]	= handle_vmclear;
-	exit_handlers[EXIT_REASON_VMLAUNCH]	= handle_vmlaunch;
+	exit_handlers[EXIT_REASON_VMCLEAR]	= handle_vmclear;   // vm 与 物理CPU接触绑定
+	exit_handlers[EXIT_REASON_VMLAUNCH]	= handle_vmlaunch;  // vm 启动
 	exit_handlers[EXIT_REASON_VMPTRLD]	= handle_vmptrld;
 	exit_handlers[EXIT_REASON_VMPTRST]	= handle_vmptrst;
 	exit_handlers[EXIT_REASON_VMREAD]	= handle_vmread;
-	exit_handlers[EXIT_REASON_VMRESUME]	= handle_vmresume;
+	exit_handlers[EXIT_REASON_VMRESUME]	= handle_vmresume;  // vm 恢复
 	exit_handlers[EXIT_REASON_VMWRITE]	= handle_vmwrite;
 	exit_handlers[EXIT_REASON_VMOFF]	= handle_vmxoff;
 	exit_handlers[EXIT_REASON_VMON]		= handle_vmxon;
