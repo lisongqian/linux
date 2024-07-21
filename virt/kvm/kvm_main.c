@@ -4798,7 +4798,7 @@ static long kvm_vm_ioctl(struct file *filp,
 	if (kvm->mm != current->mm || kvm->vm_dead)
 		return -EIO;
 	switch (ioctl) {
-	case KVM_CREATE_VCPU:
+	case KVM_CREATE_VCPU:   // 创建vCPU
 		r = kvm_vm_ioctl_create_vcpu(kvm, arg);
 		break;
 	case KVM_ENABLE_CAP: {
@@ -4810,7 +4810,7 @@ static long kvm_vm_ioctl(struct file *filp,
 		r = kvm_vm_ioctl_enable_cap_generic(kvm, &cap);
 		break;
 	}
-	case KVM_SET_USER_MEMORY_REGION: {
+	case KVM_SET_USER_MEMORY_REGION: {  // 设置VM内存空间
 		struct kvm_userspace_memory_region kvm_userspace_mem;
 
 		r = -EFAULT;
@@ -4861,7 +4861,7 @@ static long kvm_vm_ioctl(struct file *filp,
 		break;
 	}
 #endif
-	case KVM_IRQFD: {
+	case KVM_IRQFD: {   // 注册终端向量号
 		struct kvm_irqfd data;
 
 		r = -EFAULT;
