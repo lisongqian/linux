@@ -1843,7 +1843,7 @@ void vm_dump(FILE *stream, struct kvm_vm *vm, uint8_t indent)
 
 #define KVM_EXIT_STRING(x) {KVM_EXIT_##x, #x}
 
-/* Known KVM exit reasons */
+/* Known KVM exit reasons */ // kvm exit reason
 static struct exit_reason {
 	unsigned int reason;
 	const char *name;
